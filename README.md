@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Love You Bindu ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Great+Vibes&family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #0b020d;
+      color: #ffffff;
+      touch-action: manipulation;
+    }
+
+    /* Ambient Background & Particles Canvas */
+    #canvas-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .bg-gradient {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 40%, rgba(139, 26, 70, 0.45) 0%, rgba(40, 6, 28, 0.8) 50%, rgba(11, 2, 13, 0.98) 100%);
+      z-index: 0;
+    }
+
+    /* Main Container */
+    .main-wrapper {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+
+    /* Floating Glowing Glass Card */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 182, 193, 0.2);
+      border-radius: 28px;
+      padding: 3.5rem 2.5rem;
+      max-width: 720px;
+      width: 100%;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6),
+                  0 0 30px rgba(255, 105, 180, 0.2),
+                  inset 0 0 15px rgba(255, 192, 203, 0.1);
+      animation: floatAnimation 6s ease-in-out infinite;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes floatAnimation {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 192, 203, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Header Tag */
+    .sub-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: #ffb3c6;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 10px rgba(255, 179, 198, 0.5);
+    }
+
+    /* Main Typography */
+    .main-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(3.5rem, 9vw, 6rem);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff 0%, #ffccd5 40%, #ff4d6d 80%, #ff758f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 20px rgba(255, 77, 109, 0.6));
+      padding-bottom: 5px;
+    }
+
+    .name-highlight {
+      display: inline-block;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 600;
+      color: #fff;
+      text-shadow: 0 0 20px #ff4d6d, 0 0 40px #ff4d6d, 0 0 60px #ff758f;
+      letter-spacing: 2px;
+      position: relative;
+    }
+
+    /* Pulsing Heart Centerpiece */
+    .heart-icon {
+      font-size: 3rem;
+      color: #ff4d6d;
+      margin: 1.2rem 0;
+      display: inline-block;
+      animation: heartbeat 1.4s ease-in-out infinite;
+      filter: drop-shadow(0 0 15px #ff4d6d);
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.2s ease;
+    }
+
+    .heart-icon:active {
+      transform: scale(0.85);
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      14% { transform: scale(1.25); }
+      28% { transform: scale(1); }
+      42% { transform: scale(1.18); }
+      70% { transform: scale(1); }
+    }
+
+    /* Loving Quote Paragraph */
+    .romantic-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e0d0df;
+      margin-bottom: 2.2rem;
+      font-weight: 300;
+      max-width: 580px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .romantic-text span {
+      color: #ffccd5;
+      font-weight: 600;
+    }
+
+    /* Interactive Buttons */
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, #ff4d6d 0%, #c9184a 100%);
+      color: #ffffff;
+      border: none;
+      padding: 0.95rem 2.2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(255, 77, 109, 0.4);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 0.5px;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(255, 77, 109, 0.6);
+      background: linear-gradient(135deg, #ff758f 0%, #ff4d6d 100%);
+    }
+
+    .btn:active {
+      transform: translateY(1px) scale(0.98);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: none;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+    }
+
+    /* Floating Heart Tap Effect */
+    .tap-heart {
+      position: fixed;
+      pointer-events: none;
+      font-size: 1.8rem;
+      animation: floatUpAndFade 1.2s ease-out forwards;
+      z-index: 100;
+      filter: drop-shadow(0 0 8px #ff4d6d);
+    }
+
+    @keyframes floatUpAndFade {
+      0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
+      }
+      50% {
+        transform: translate(-50%, -100px) scale(1.3) rotate(15deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -180px) scale(1) rotate(-15deg);
+      }
+    }
+
+    /* Secret Love Note Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 2, 12, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background: linear-gradient(145deg, #1f0718 0%, #0d020d 100%);
+      border: 1px solid rgba(255, 117, 143, 0.3);
+      padding: 2.5rem;
+      border-radius: 24px;
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 40px rgba(255, 77, 109, 0.3);
+      transform: scale(0.8);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .modal-overlay.active .modal-card {
+      transform: scale(1);
+    }
+
+    .modal-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: #ff758f;
+      margin-bottom: 1rem;
+    }
+
+    .modal-body {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #e2d1f0;
+      margin-bottom: 2rem;
+    }
+
+    /* Footer */
+    .footer-text {
+      margin-top: 2.5rem;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      color: rgba(255, 255, 255, 0.4);
+      text-transform: uppercase;
+    }
+
+    /* Custom Music Player Widget (Visual) */
+    .audio-control {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 30px;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .audio-control:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .audio-icon {
+      font-size: 1.2rem;
+    }
+
+    .audio-text {
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      color: #ffccd5;
+    }
+
+    @media (max-width: 480px) {
+      .glass-card {
+        padding: 2.5rem 1.5rem;
+      }
+      .sub-title {
+        font-size: 0.8rem;
+        letter-spacing: 4px;
+      }
+      .romantic-text {
+        font-size: 0.98rem;
+      }
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Glow Background -->
+  <div class="bg-gradient"></div>
+
+  <!-- Particle Stars Canvas -->
+  <div id="canvas-container">
+    <canvas id="particleCanvas"></canvas>
+  </div>
+
+  <!-- Main Content Card -->
+  <div class="main-wrapper">
+    <div class="glass-card">
+      <div class="sub-title">Forever & Always</div>
+      
+      <h1 class="main-title">
+        I Love You <br>
+        <span class="name-highlight">Bindu</span>
+      </h1>
+
+      <div class="heart-icon" id="mainHeart" title="Click to send love!">❤️</div>
+
+      <p class="romantic-text">
+        Every moment with you feels like a beautiful dream. You bring light, warmth, and pure joy into my life. 
+        <span>Bindu</span>, my heart is forever yours.
+      </p>
+
+      <div class="action-buttons">
+        <button class="btn" onclick="triggerHeartShower()">Send Love ❤️</button>
+        <button class="btn btn-secondary" onclick="openModal()">Open Special Note 💌</button>
+      </div>
+
+      <div class="footer-text">Made with endless love</div>
+    </div>
+  </div>
+
+  <!-- Ambient Music Control -->
+  <div class="audio-control" id="audioToggle" onclick="toggleAudio()">
+    <span class="audio-icon" id="soundIcon">🎵</span>
+    <span class="audio-text" id="soundText">Play Romance</span>
+  </div>
+
+  <!-- Secret Note Modal -->
+  <div class="modal-overlay" id="noteModal">
+    <div class="modal-card">
+      <h2 class="modal-title">Dearest Bindu,</h2>
+      <p class="modal-body">
+        In a world full of endless possibilities, finding you was my favorite miracle. 
+        Thank you for being my inspiration, my happiness, and my best friend. 
+        I love you more than words can ever express! ✨💖
+      </p>
+      <button class="btn" onclick="closeModal()">Close With a Smile 😊</button>
+    </div>
+  </div>
+
+  <!-- Background Audio (Soft Romantic Loop) -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="https://assets.mixkit.co/music/preview/mixkit-loving-view-542.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // --- Canvas Heart & Particle Animation ---
+    const canvas = document.getElementById('particleCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let width, height;
+    let particles = [];
+    let hearts = [];
+
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // Particle Class (Background Stars/Glow)
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = Math.random() * 2 + 0.5;
+        this.speedX = (Math.random() - 0.5) * 0.4;
+        this.speedY = (Math.random() - 0.5) * 0.4;
+        this.opacity = Math.random() * 0.7 + 0.3;
+        this.pulse = Math.random() * 0.02 + 0.005;
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        this.opacity += Math.sin(Date.now() * this.pulse) * 0.01;
+
+        if (this.x < 0 || this.x > width || this.y < 0 || this.y > height) {
+          this.reset();
+        }
+      }
+
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, Math.min(1, this.opacity));
+        ctx.fillStyle = '#ffccd5';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    // Floating Heart Class
+    class FloatingHeart {
+      constructor(x, y, isBurst = false) {
+        this.x = x || Math.random() * width;
+        this.y = y || height + 20;
+        this.size = Math.random() * 18 + 12;
+        this.speedY = isBurst ? (Math.random() * -4 - 2) : (Math.random() * -1.5 - 0.8);
+        this.speedX = (Math.random() - 0.5) * (isBurst ? 4 : 1.5);
+        this.opacity = 1;
+        this.rotation = (Math.random() - 0.5) * 0.4;
+        this.rotSpeed = (Math.random() - 0.5) * 0.02;
+        this.color = ['#ff4d6d', '#ff758f', '#ff8fa3', '#ffb3c6'][Math.floor(Math.random() * 4)];
+      }
+
+      update() {
+        this.y += this.speedY;
+        this.x += this.speedX;
+        this.rotation += this.rotSpeed;
+        this.opacity -= 0.006;
+      }
+
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rotation);
+        ctx.globalAlpha = Math.max(0, this.opacity);
+        ctx.fillStyle = this.color;
+        ctx.font = `${this.size}px serif`;
+        ctx.fillText('❤️', 0, 0);
+        ctx.restore();
+      }
+    }
+
+    // Initialize Particles
+    for (let i = 0; i < 70; i++) {
+      particles.push(new Particle());
+    }
+
+    // Periodic Heart Spawner
+    setInterval(() => {
+      if (hearts.length < 25) {
+        hearts.push(new FloatingHeart());
+      }
+    }, 800);
+
+    // Animation Loop
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+
+      // Render Ambient Particles
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+
+      // Render & Filter Floating Hearts
+      for (let i = hearts.length - 1; i >= 0; i--) {
+        hearts[i].update();
+        hearts[i].draw();
+        if (hearts[i].opacity <= 0 || hearts[i].y < -50) {
+          hearts.splice(i, 1);
+        }
+      }
+
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // --- Interactive Tap/Click FX ---
+    window.addEventListener('click', (e) => {
+      // Avoid triggering on buttons/modal
+      if (e.target.tagName === 'BUTTON' || e.target.closest('.modal-card')) return;
+
+      createTapHeart(e.clientX, e.clientY);
+    });
+
+    function createTapHeart(x, y) {
+      const heart = document.createElement('div');
+      heart.className = 'tap-heart';
+      heart.innerHTML = ['❤️', '💖', '✨', '💕', '🌸'][Math.floor(Math.random() * 5)];
+      heart.style.left = `${x}px`;
+      heart.style.top = `${y}px`;
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 1200);
+    }
+
+    // Heart Burst Feature
+    function triggerHeartShower() {
+      const card = document.querySelector('.glass-card');
+      const rect = card.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      for (let i = 0; i < 35; i++) {
+        hearts.push(new FloatingHeart(centerX, centerY, true));
+      }
+    }
+
+    // Main Heart Click Event
+    document.getElementById('mainHeart').addEventListener('click', (e) => {
+      triggerHeartShower();
+      createTapHeart(e.clientX, e.clientY);
+    });
+
+    // --- Modal Logic ---
+    function openModal() {
+      document.getElementById('noteModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('noteModal').classList.remove('active');
+    }
+
+    // --- Audio Toggle Logic ---
+    const music = document.getElementById('bgMusic');
+    const soundText = document.getElementById('soundText');
+    const soundIcon = document.getElementById('soundIcon');
+    let isPlaying = false;
+
+    function toggleAudio() {
+      if (isPlaying) {
+        music.pause();
+        soundText.textContent = "Play Romance";
+        soundIcon.textContent = "🎵";
+        isPlaying = false;
+      } else {
+        music.play().then(() => {
+          soundText.textContent = "Pause Music";
+          soundIcon.textContent = "🎶";
+          isPlaying = true;
+        }).catch(() => {
+          soundText.textContent = "Tap to enable";
+        });
+      }
+    }
+  </script>
+</body>
+</html>
